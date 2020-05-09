@@ -1,7 +1,8 @@
 import React from "react";
 import SplitPane from 'react-split-pane';
 import Resources from "../components/Resources";
-import Questions from "../components/Questions";
+import QContainer from "../components/QContainer";
+import Questions from "../components/Questions"
 import Button from '@material-ui/core/Button';
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
@@ -154,12 +155,13 @@ class User extends React.Component {
                         </div>
                         <div>
                             <Questions />
-                                <form noValidate autoComplete = "off" onSubmit = {this.postQuestion} onChange = {this.handleChange}>
-                                    <Grid container>
-                                    <TextField id="question" fullWidth="true" label="Enter a Question" variant="outlined">Enter Question</TextField>
-                                    <Button type="submit" onClick={this.postQuestion}>></Button>
-                                    </Grid>
-                                </form>
+                            {/* <QContainer/> */}
+                            <form noValidate autoComplete = "off" onSubmit = {this.postQuestion} onChange = {this.handleChange}>
+                                <Grid container>
+                                <TextField id="question" fullWidth="true" label="Enter a Question" variant="outlined">Enter Question</TextField>
+                                <Button type="submit" onClick={this.postQuestion}>></Button>
+                                </Grid>
+                            </form>
                         </div>
                     </SplitPane>
                     <div>

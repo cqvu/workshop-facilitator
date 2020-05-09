@@ -3,7 +3,7 @@ import SplitPane from 'react-split-pane';
 import '../styles/Host.css';
 import SendMail from '../components/SendMail';
 import Resources from "../components/Resources";
-import Questions from "../components/Questions";
+import QContainer from "../components/QContainer";
 import Polls from "../components/Polls";
 
 
@@ -133,10 +133,10 @@ class Host extends React.Component {
                         defaultSize="50%"
                     >
                         <div>
-                            <Polls isHost= {true} roomID={this.props.location.state.roomID} socket={socket}/>
+                            <Polls isHost= {true} roomId={this.props.location.state.roomID} socket={socket}/>
                         </div>
                         <div>
-                            <Questions />
+                            <QContainer />
                         </div>
                     </SplitPane>
 

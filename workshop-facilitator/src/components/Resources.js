@@ -51,7 +51,6 @@ class Resources extends React.Component {
             case "docs":
                 return DOC;
 
-
             default:
                 return URL;
         }

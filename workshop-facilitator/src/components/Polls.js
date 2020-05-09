@@ -240,7 +240,7 @@ class Polls extends React.Component {
             return poll._id === parseInt(pollId);
         })
 
-        console.log(roomId);
+        console.log(this.props);
         // emit poll to server to emit to all clients
         socket.emit("publish", {pollData: poll[0], name: roomId})
     }
