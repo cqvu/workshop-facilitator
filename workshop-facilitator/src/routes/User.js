@@ -180,8 +180,7 @@ class User extends React.Component {
                             <Polls isHost={false} socket={socket} roomID={this.props.location.state.roomID}/>
                         </div>
                         <div>
-                            <Questions />
-                            {/* <QContainer/> */}
+                            <QContainer />
                             <form noValidate autoComplete = "off" onSubmit = {this.postQuestion} onChange = {this.handleChange}>
                                 <Grid container>
                                 <TextField id="question" fullWidth="true" label="Enter a Question" variant="outlined">Enter Question</TextField>

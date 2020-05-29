@@ -13,7 +13,11 @@ class Questions extends React.Component {
     constructor() {
         super();
         this.state = {
-            questions: [],
+            questions: [{
+                id: 0,
+                question: "Test question",
+                upvotes: 0
+            }],
             curID: 1,
             ENDPOINT: "localhost:5000",
             activeTab: 1
@@ -51,7 +55,7 @@ class Questions extends React.Component {
                         this.state.questions.map(question =>
                             <Question key={question.id} question={question} />
                         )
-                    : <p>No questions to display</p>
+                    : null
                 }
             </div>
             </Scrollbars>

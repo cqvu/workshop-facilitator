@@ -184,6 +184,11 @@ io.on("connection", socket => {
         io.sockets.emit("uploadURL", urlData);
     })
 
+    socket.on("qResolve", qData => {
+        console.log("Resolving question " + qData);
+        io.sockets.emit("qResolve", qData);
+    })
+
     // listen for disconnect event (when user leaves)
     socket.on("disconnect", () => {
         console.log("a user disconnected");

@@ -17,7 +17,7 @@ class QContainer extends React.Component {
             questions: [],
             curID: 1,
             ENDPOINT: "localhost:5000",
-            activeTab: 1
+            activeTab: 0
         }
     }
 
@@ -32,7 +32,7 @@ class QContainer extends React.Component {
             <div className="qListContainer">
                 <AppBar position="static" color="default">
                 <Tabs value={this.state.activeTab} onChange={this.handleChange} centered indicatorColor="primary" textColor="primary">
-                    <Tab label="Unanswered"/>
+                    <Tab label="Questions"/>
                     <Tab label="Resolved"/>
                 </Tabs>
                 </AppBar>

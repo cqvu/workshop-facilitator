@@ -364,9 +364,9 @@ class Polls extends React.Component {
                 <AddPoll addPoll={this.state.addPoll} handleClose={this.handleClose} handleChange={this.handleChange}
                     answer={this.state.answer} handleAdd={this.handleAdd}  />
 
+                {/* Edit Poll Dialog */}
                 <EditPoll editPoll={this.state.editPoll} handleClose={this.handleClose} handleEdit={this.handleEdit}
                     poll={this.state.poll} handleChange={this.handleChange} answer={this.state.answer}/>
-                {/* Edit Poll Dialog */}
 
             </div>
         )

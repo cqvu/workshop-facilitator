@@ -13,7 +13,10 @@ var roomSchema = new Schema({
         src: String,
         resType: String
     }],
-    questions: [String],
+    questions: [{
+        question: String,
+        answer: String
+    }],
     // list of emails
     attendees: [String],
     polls: [{

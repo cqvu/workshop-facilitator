@@ -57,7 +57,7 @@ const UploadDialog = (props) => {
                 //maxWidth={"sm"}
                 open={URLOpen}
                 onClose={handleClose}
-                aria-labelledby="upload-dialog-title"
+                aria-labelledby="upload-dialog"
             >
                 <DialogTitle id="upload-dialog-title">Upload via URL</DialogTitle>
                 <DialogContent className="UploadDialogContent">

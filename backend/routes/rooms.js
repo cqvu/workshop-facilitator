@@ -44,7 +44,7 @@ router.route('/create').post((req, res) => {
         wsDescript: req.body.wsDescriptForm,
         joinCode: req.body.joinCodeUser,
         resources: [],
-        questions: [], // will contain {title:"", description:""}
+        questions: [],
         attendees: [],
         wfclickers: [], //w ill contain { id: "" clicker:"", answers:[], correct:""}
         feedback: ""

@@ -16,7 +16,7 @@ class Resources extends React.Component {
     constructor() {
         super();
         this.state = {
-            "resources": null
+            "resources": []
         }
         //const images = require.context('./resourceIcons', true);
     }
