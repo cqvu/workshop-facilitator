@@ -1,10 +1,7 @@
 import React from 'react';
-import ArrowUpwardRoundedIcon from '@material-ui/icons/ArrowUpwardRounded';
 import SendIcon from '@material-ui/icons/Send';
 import DoneIcon from '@material-ui/icons/Done';
 import Grid from '@material-ui/core/Grid';
-import Popover from '@material-ui/core/Popover';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import io_client from "socket.io-client";
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Menu from '@material-ui/core/Menu';
@@ -66,9 +63,11 @@ class Question extends React.Component{
     }
 
     handleResolve = () => {
-        const qData = this.props.question;
-        this.setState({resolved: true})
-        socket.emit("qResolve", {qData: qData});
+        const questionId = this.props.question._id
+        if (questionId) {
+            this.props.handleResolve(questionId)
+            this.handleClose()
+        }
     }
 
     openMenu = () => {
@@ -106,7 +105,7 @@ class Question extends React.Component{
                             <ListItemIcon>
                                 <ChatIcon />
                             </ListItemIcon>
-                            <ListItemText primary="Reply Thread" />
+                            <ListItemText primary="Reply" />
                         </MenuItem>
                         <MenuItem onClick={this.handleResolve}>
                             <ListItemIcon>

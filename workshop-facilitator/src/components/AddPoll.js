@@ -19,7 +19,7 @@ class AddPoll extends React.Component {
         const {addPoll, handleClose, handleChange, answer, handleAdd} = this.props;
         
         return(
-            <Dialog open={addPoll} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth="md">
+            <Dialog open={addPoll} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth>
             <DialogTitle id="form-dialog-title">New Poll</DialogTitle>
             <DialogContent>
             <form onChange={handleChange}>

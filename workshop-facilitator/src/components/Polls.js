@@ -2,7 +2,6 @@ import React from "react";
 import Poll from "./Poll";
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import AddIcon from '@material-ui/icons/Add';
-import io_client from "socket.io-client";
 import EditPoll from "./EditPoll";
 import AddPoll from "./AddPoll";
 import { Scrollbars } from 'react-custom-scrollbars';
@@ -51,7 +50,6 @@ class Polls extends React.Component {
     componentDidMount(){
         socket = this.props.socket;
         const {roomId} = this.props;
-        console.log(this.props);
         if (socket){
             socket.on("err", errorData => {
                 alert(errorData.error);
@@ -238,7 +236,6 @@ class Polls extends React.Component {
 
         // find poll in the array of polls and remove it
         const pollIndx = this.state.polls.findIndex(poll => poll._id.toString() === pollId);
-        console.log(pollIndx);
         this.setState(prevState => {
             prevState.polls.splice(pollIndx, 1);
             let polls = prevState.polls;
@@ -246,7 +243,6 @@ class Polls extends React.Component {
         })
 
         // delete this poll from the db
-        console.log(pollId);    
         fetch(`http://localhost:5000/rooms/${roomId}/polls/delete`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},

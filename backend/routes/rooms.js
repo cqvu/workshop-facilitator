@@ -5,7 +5,7 @@ const express = require('express');
 const router = express.Router();
 const nodemailer = require("nodemailer");
 const WorkshopRoom = require("../models/workshop_room.model.js"); //added to be able to use Schema
-
+const mongoose = require('mongoose');
 
 
 /*
@@ -90,23 +90,21 @@ router.route('/:id/questions/').get((req, res) => {
 @route POST /rooms/questions/add
 @desc Adds a new question to the specific workshop room
 */
-router.route('/:id/questions/add').post((req, res) => {
-    const roomId = req.params.id;
-    //const question = req.body.question;
-    const question = req.body;
-    console.log(question);
+router.route('/:roomId/questions/add').post((req, res) => {
+    const roomId = req.params.roomId;
+    console.log("roomId recieved by API: ", roomId);
+    const question = req.body
     // database query
     WorkshopRoom.findById(roomId)
         .then(room => {
-            //let questions = room.questions;
-            room.questions.push(question.question);
-            console.log(room.questions);
+            const newIndex = room.questions.length
+            room.questions.push(question);
             // save the room with the updated questions array
             room.save()
-                .then(() => res.json(room))
+                .then(() => res.json(room.questions[newIndex]))
                 .catch(err => res.status(400).json(err));
         })
-        .catch(err => res.status(404).json(err));
+        .catch(err => console.log(err));
 })
 
 /*
@@ -126,6 +124,35 @@ router.route('/:roomId/questions/:qId').get((req, res) => {
            // res.send(question)
            var question = room.questions.filter(id => id.equals(questionId))
            res.json(question);
+        }
+    })
+})
+
+/*
+@route GET /rooms/:roomId/questions/:qId
+@desc Gets a specific question in a specific room
+*/
+router.route('/:roomId/questions/:qId/resolve').post((req, res) => {
+    const roomId = req.params.roomId;
+    const questionId = req.params.qId;
+    console.log("In rooms.js resolve: ", roomId, questionId)
+    WorkshopRoom.findById(roomId, (err, room) => {
+        if(err) {
+            console.log("err in rooms.js: ", err)
+            res.json(err);
+        }
+        else {
+            for (let i = 0; i < room.questions.length; i++) {
+                if (room.questions[i]._id.toString() === questionId) {
+                    room.questions[i].resolved = true;
+                    console.log("Resolved in rooms.js")
+                    break;
+                }
+            }
+            room.save()
+                .then(() => res.json(room.questions))
+                .catch(err => res.status(400).json(err))
+           // var question = room.questions.filter(id => id.equals(questionId))
         }
     })
 })

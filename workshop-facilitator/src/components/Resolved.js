@@ -18,14 +18,23 @@ class Resolved extends React.Component {
     }
 
     componentDidMount() {
+        const {roomId} = this.props;
+        // fetch resources from database and populate this.state.resources
+        fetch(`http://localhost:5000/rooms/${roomId}/questions`)
+            .then(res => res.json())
+            .then(questions => {
+                const resolved = questions.filter(question => question.resolved === true)
+                this.setState({ resolved })
+            })
+            
         socket = io_client("http://localhost:5000");
 
-        socket.on("qResolve", data => {
-            console.log('got socket for resolve')
-            const { resolved } = this.state
-            resolved.push(data.qData)
-            this.setState({ resolved })
-        })
+        // socket.on("qResolve", data => {
+        //     console.log('got socket for resolve')
+        //     const { resolved } = this.state
+        //     resolved.push(data.qData)
+        //     this.setState({ resolved })
+        // })
     }
 
     handleChange = (e, value) => {
@@ -40,8 +49,8 @@ class Resolved extends React.Component {
             <div className="qListContainer">
                 {
                     this.state.resolved && this.state.resolved.length > 0 ?
-                        this.state.questions.map(question =>
-                            <Question key={question.id} question={question} />
+                        this.state.resolved.map(question =>
+                            <Question key={question._id} question={question} />
                         )
                     : <p>No resolved questions to display</p>
                 }

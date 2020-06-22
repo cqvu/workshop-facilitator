@@ -16,7 +16,7 @@ class EditPoll extends React.Component {
         //poll={this.state.poll} handleChange={this.handleChange} answer={this.state.answer}
         const {editPoll, handleClose, handleEdit, poll, handleChange, answer} = this.props;
         return(
-            <Dialog open={editPoll} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth="md">
+            <Dialog open={editPoll} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth>
             <DialogTitle id="form-dialog-title">Edit Poll</DialogTitle>
             <DialogContent>
             <form id="editForm" onSubmit={handleEdit}>

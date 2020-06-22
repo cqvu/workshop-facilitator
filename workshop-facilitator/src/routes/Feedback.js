@@ -20,7 +20,7 @@ class Feedback extends React.Component {
 
     componentDidMount(){
         //get fetches the room by ID if the ID was sent,saves in state
-        if(this.props.location.state != null){
+        if(this.props.location.state !== null){
             console.log("Here is the ID: " + this.props.location.state.roomID);
             //this.setState( {roomID: this.props.location.state.roomID} );
             //console.log("Here is the ID that was passed: " +  this.state.roomID);
@@ -42,7 +42,7 @@ class Feedback extends React.Component {
         this.setState({
             [e.target.id]: e.target.value
         })
-        if(this.state.email!="") {
+        if(this.state.email!=="") {
           this.setState({
             feedback: true
           })
