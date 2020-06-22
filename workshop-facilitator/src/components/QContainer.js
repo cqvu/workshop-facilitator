@@ -94,9 +94,9 @@ class QContainer extends React.Component {
                     </TabContainer>
                 }
 
-                <form noValidate autoComplete="off" onSubmit = {this.postQuestion} onChange = {this.handleChange}>
+                <form noValidate autoComplete="off" onSubmit = {this.postQuestion} onChange={this.handleChange}>
                     <Grid container>
-                    <TextField id="question" fullWidth label="Enter a Question" variant="outlined">Enter Question</TextField>
+                    <TextField id="question" fullWidth label="Enter a Question" variant="outlined" value={this.state.question}>Enter Question</TextField>
                     <Button type="submit" >&gt;</Button>
                     </Grid>
                 </form>
